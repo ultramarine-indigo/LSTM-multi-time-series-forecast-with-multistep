@@ -20,15 +20,19 @@ def predict(net, x, device):
 
 def predict_iteration(net, x, look_ahead, device):
 
-    #batch_size = X.shape[0]
+
+    # x: [batch_size,look_back, feature]
     ans = []
     input = torch.Tensor(x).to(device)
 
     for i in range(look_ahead):
         pred = net(input)
-        ans.append(pred)
+        print('pred shape:',pred.shape)
+        ans.append(pred.cpu().detach().numpy())
+        pred = torch.unsqueeze(pred,1)
         input = torch.cat([input,pred],1)
         input = input[:, 1:, :]  # drop the head
 
     ans = np.array(ans)
+    #ans=ans.transpose(1,0,2)
     return ans

@@ -16,7 +16,7 @@ parser.add_argument('--look_back',type=int,default=12,help='look back timestamp'
 parser.add_argument('--predict_step',type=int,default=6,help='')
 
 parser.add_argument('--mode', type=str, default='train', help='train,test')
-parser.add_argument('--epoch',type=int, default=10,help='epochs')
+parser.add_argument('--epoch',type=int, default=2,help='epochs')
 parser.add_argument('--batch_size',type=int,default=64,help='batch size')
 parser.add_argument('--check_point', type=int, default=10, help='print loss iter')
 
